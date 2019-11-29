@@ -44,7 +44,6 @@ public class ProductDAO implements DBConfig{
             conn=DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS);
             //"SELECT * FROM table LIMIT $offset, $no_of_records_per_page";
             String sql="SELECT * FROM product ORDER BY p_id LIMIT "+fromIndex+", "+limit+"";
-            System.out.println(sql);
             PreparedStatement pStmt=conn.prepareStatement(sql);
             
             ResultSet rs=pStmt.executeQuery();

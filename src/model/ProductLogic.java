@@ -5,15 +5,15 @@ import java.util.List;
 import dao.ProductDAO;
 
 public class ProductLogic{
-	private PagerLogic pagerLogic;
+	private PagenateLogic pagenateLogic;
 	 
-    public List<Product> findALLProducts(Integer page, Integer limit, PagerLogic pLogic){
+    public List<Product> findALLProducts(Integer page, Integer limit, PagenateLogic pLogic){
         ProductDAO daoProduct = new ProductDAO();
          //ページ表示数が0の場合は設定されていないので初期の値を設定する
         if(limit == 0) {
-        	limit = pLogic.getPager().getDefaultLimitPerPage();
+        	limit = pLogic.getPagenate().getDefaultLimitPerPage();
         }
-        List<Product> productList = daoProduct.findAllProducts(pLogic.getPager().getOffset(), limit);
+        List<Product> productList = daoProduct.findAllProducts(pLogic.getPagenate().getOffset(), limit);
         return productList;
     }
     

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import model.Cart;
 import model.CartLogic;
-import model.PagerLogic;
+import model.PagenateLogic;
 import model.Product;
 import model.ProductLogic;
 
@@ -86,11 +86,11 @@ public class Items extends HttpServlet {
 
         ProductLogic productLogic = new ProductLogic();
         Integer totalProducts = productLogic.countProducts();
-        PagerLogic pagerLogic = new PagerLogic(page,totalProducts,limit);
+        PagenateLogic pagerLogic = new PagenateLogic(page,totalProducts,limit);
         List<Product> productList=productLogic.findALLProducts(page,limit,pagerLogic);
         
         if(productList !=null){
-              request.setAttribute("pager",pagerLogic.getPager());
+              request.setAttribute("pagenate",pagerLogic.getPagenate());
               request.setAttribute("productList",productList);
         }
 

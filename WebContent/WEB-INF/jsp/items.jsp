@@ -1,17 +1,17 @@
 <%@ page import="model.Product" %>
 <%@ page import="model.Usr" %>
 <%@ page import="model.Cart" %>
-<%@ page import="model.Pager" %>
+<%@ page import="model.Pagenate" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.stream.IntStream" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-Usr loginUsr = (Usr) session.getAttribute("loginUsr");
+	Usr loginUsr = (Usr) session.getAttribute("loginUsr");
 List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 List<Product> productList = (List<Product>)request.getAttribute("productList");
 String errorMsg = (String)request.getAttribute("errorMsg");
-Pager pager = (Pager)request.getAttribute("pager");
+Pagenate pagenate = (Pagenate)request.getAttribute("pagenate");
 Integer amount=0;
 Integer total=0;
   if(cartList !=null){
@@ -21,9 +21,9 @@ Integer total=0;
     }
    }
 
-List<Integer> range = pager.getPageRange();
-Integer limit = pager.getLimit();
-Integer currentPage = pager.getCurrentPage();
+List<Integer> range = pagenate.getPageRange();
+Integer limit = pagenate.getLimit();
+Integer currentPage = pagenate.getCurrentPage();
 %>
 
 <!doctype html>

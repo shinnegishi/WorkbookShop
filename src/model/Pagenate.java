@@ -1,13 +1,13 @@
 package model;
 import java.util.List;
 
-public class Pager implements PagerConfig{
+public class Pagenate implements PagenateConfig{
 	private List<Integer> pageRange;
 	private int currentPage;
 	private int offset;
 	private int limit;
 	
-	public Pager() {
+	public Pagenate() {
 		
 	}
 	
@@ -17,7 +17,7 @@ public class Pager implements PagerConfig{
 	 * @param currentPage
 	 * @param pageRange
 	 */
-	public Pager( Integer currentPage, int limit, List<Integer> pageRange) {
+	public Pagenate( Integer currentPage, int limit, List<Integer> pageRange) {
 		//最初のページだった場合は0をオフセット値に
 		if(currentPage == 1) {
 			this.setOffset(0);
@@ -27,7 +27,7 @@ public class Pager implements PagerConfig{
 		this.setCurrentPage(currentPage);
 		this.setPageRange(pageRange);
 		if(limit ==  0) {
-			limit = PagerConfig.LIMIT_PER_PAGE;
+			limit = PagenateConfig.LIMIT_PER_PAGE;
 		}
 		this.setLimit(limit);
 	}
@@ -62,7 +62,7 @@ public class Pager implements PagerConfig{
 	 * @return
 	 */
 	public Integer getDefaultLimitPerPage() {
-		return PagerConfig.LIMIT_PER_PAGE;
+		return PagenateConfig.LIMIT_PER_PAGE;
 	}
 
 	/**
